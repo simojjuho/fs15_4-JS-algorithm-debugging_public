@@ -22,12 +22,12 @@ You only need to produce the same array as expected result, no need to consider 
 possibility.
  */
 
-let myArr = ['12-24-2014', '09-23-2022', '12-30-2021', '08-02-2021', '07-15-2018', '12-14-2019', '12-14-2022']
+myArr = ['12-24-2014', '09-2022-23', '12-30-2021', '08-02-2021', '07-15-2018', '2019-12-14', '2022-14-12']
 const fixDate = (array) =>  array.map(date => {
     const dateAsArray = date.split('-')
-    /* I assumed that there were some mistakes in the given array as the text didn't mention some dates being in different order as the other ones. 
-    Indices 1, 5 and 6 weren't in the same format as the assignment suggested. /Juho */
-    return `${dateAsArray[1]}-${dateAsArray[0]}-${dateAsArray[2]}`
+    const sortedArray = dateAsArray.sort((a,b) => a-b)
+    const dayElem = sortedArray.splice(1, 1)
+    return dayElem.concat(sortedArray).join('-')
 })
 
 let newArr = fixDate(myArr)
